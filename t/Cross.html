@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+    <div id="avx"></div>
+
+<center><img src="{% static "pkt/cross.png" %}"/> </center>
+        </div>
+    </div>
+    <input type="hidden" name="randomTime" value="0" id="randomTime"/>
+
+
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+var style=0;
+window.onload=function () {
+style=1;
+sendMessage(1);
+var randomtime=0;
+	        var ax = document.getElementById('avx');
+
+    currentTime= new Date();
+    randomTime=Math.floor(Math.random() * Math.floor(2000));
+    $('#randomTime').val(randomTime);
+//            ax.innerHTML = randomTime;
+
+    setTimeout(function () {
+sendMessage(2);
+    $('form#form').submit();
+    }, 10000+randomtime);
+}
+
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+
+
+
+</script>    
+
+{% endblock %}

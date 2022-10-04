@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+                                                             
+<br>Ваш ответ: <br>
+
+<input type="text" name="ans1r">
+<hr>             
+
+        </div>
+    </div>
+
+
+    {% next_button %}
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {currentTime= new Date(); }
+function mf(){ currentTime2= new Date();
+$('#currentTime').val(Math.floor(currentTime2-currentTime)/1000);
+
+}
+</script>    
+
+<!--link rel="preload" href="{% static 'js/dist/train.js' %}" as="script">
+    <script src="{% static 'js/dist/train.js' %}"></script>
+     -->
+{% endblock %}

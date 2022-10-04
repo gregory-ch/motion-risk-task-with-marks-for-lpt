@@ -1,0 +1,50 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="card">
+    </div>
+ <center>   <div id="p5cont"></div></center>
+    <input type="hidden" name="difficulty1" value="0" id="id_difficulty"/>
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+    <script>
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+sendMessage(';');
+console.log('mark 11');
+
+
+
+        var timerestin=30000;
+
+        var speed = 0;
+        var speed = {{ Constants.speed|json }};
+
+
+        var choose_difficulty = true;
+        var chosen_arc_id = {{player.difficulty|json  }};
+
+
+
+    </script>
+    <link rel="preload" href="{% static 'js/dist/trainf.js' %}" as="script">
+    <script src="{% static 'js/dist/trainf.js' %}"></script>
+
+{% endblock %}

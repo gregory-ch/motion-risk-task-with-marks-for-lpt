@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ a }} </h5>
+    <input type="hidden" name="b2" value={{ b }} />
+<br>
+Закончился период {{ view.round_number }} из {{ Constants.num_rounds }}    <br>
+Вы сыграли {{gr}} игр с шариками.                                  <br>
+В шариках всего Вы выиграли  {{ballres}} баллов                            <br>
+В ответах всего Вы выиграли {{qres}} баллов                                <br>
+        </div>
+    </div>
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+
+<script>
+
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+
+
+
+window.onload=function () {currentTime= new Date();sendMessage('E'); }
+
+</script>    
+
+
+
+    {% next_button %}
+
+{% endblock %}

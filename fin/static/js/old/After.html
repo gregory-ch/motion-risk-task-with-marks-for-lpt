@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Cловосочетание. Период {{ view.round_number }} из {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Доделываем словосочитание</h5>
+            {{a}} 
+        </div>
+    </div>
+    <input type="text" name="ans2" autofocus/>
+    <input type="hidden" name="currentTime2" value="0" id="currentTime2"/>
+
+
+<button  class="btn btn-primary btn-large" onclick="mf(this)" > Отправить </button>
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {currentTime= new Date(); }
+function mf(){ currentTime2= new Date();
+$('#currentTime2').val(Math.floor(currentTime2-currentTime)/1000);
+
+}
+</script>    
+
+<!--link rel="preload" href="{% static 'js/dist/train.js' %}" as="script">
+    <script src="{% static 'js/dist/train.js' %}"></script>
+     -->
+{% endblock %}

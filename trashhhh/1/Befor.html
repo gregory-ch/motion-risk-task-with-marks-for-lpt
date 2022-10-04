@@ -1,0 +1,73 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{a}}</h5>
+        </div>
+    </div>
+
+    <input type="hidden" name="currentTime" value="0" id="currentTime"/>
+    <input type="hidden" name="q" value={{qb}} id="q"/>
+
+<button name="ans" value="True"  class="btn btn-primary btn-large" onclick="mf(this)" id="ans"> дать ответ</button>
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {sendMessage(3); currentTime= new Date(); }
+
+document.addEventListener('keydown', function(event) {
+//  if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+//    alert('Отменить!')
+//  }
+currentTime2= new Date(); sendMessage(4);
+$('#currentTime').val(Math.floor(currentTime2-currentTime)/1000);
+console.log('hoho');
+document.getElementById("ans").click();
+//document.getElementById('mainform').submit();
+//$('form#form').submit();
+
+});
+
+
+function mf(){ 
+currentTime2= new Date(); sendMessage(4);
+$('#currentTime').val(Math.floor(currentTime2-currentTime)/1000);
+
+}
+
+
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+
+
+</script>    
+
+<!--link rel="preload" href="{% static 'js/dist/train.js' %}" as="script">
+    <script src="{% static 'js/dist/train.js' %}"></script>
+     -->
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+    <div class="card">
+    </div>
+<center>    <div id="p5cont"></div></center>
+    <div id="result"></div>
+
+
+    <input type="hidden" name="task01" value="0" id="id_task"/>
+    <input type="hidden" name="timerest01" value="0" id="timerest"/>
+    <input type="hidden" name="gamedone1" value="0" id="id_gamedone"/>
+
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+    <script>
+        var timerestin={{timerest0}};
+       var speed = {{ Constants.speed|json }};
+        var choose_difficulty = false;
+        var chosen_arc_id = {{player.difficulty01|json  }};
+
+        var last=0;
+
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+sendMessage('<');
+console.log('mark 12');
+
+
+
+    </script>
+    <link rel="preload" href="{% static 'js/dist/trainf.js' %}" as="script">
+    <script src="{% static 'js/dist/trainf.js' %}"></script>
+
+{% endblock %}

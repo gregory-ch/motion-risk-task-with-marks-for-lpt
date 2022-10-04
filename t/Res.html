@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ a }} </h5>
+    <input type="hidden" name="b1" value={{ b }} />
+<br>
+
+        </div>
+    </div>
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {sendMessage(8); }
+
+
+////////////synq           /
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+
+
+</script>    
+
+    {% next_button %}
+
+{% endblock %}

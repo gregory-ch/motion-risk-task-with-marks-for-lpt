@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ a }} </h5>
+    <input type="hidden" name="b" value={{ b }} />
+<br>
+
+        </div>
+    </div>
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+
+    {% next_button %}
+
+{% endblock %}

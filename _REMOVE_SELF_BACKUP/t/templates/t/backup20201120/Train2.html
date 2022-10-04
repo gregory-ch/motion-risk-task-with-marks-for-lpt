@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+    <div class="card">
+    </div>
+    <div id="p5cont"></div>
+    <div id="result"></div>
+
+
+    <input type="hidden" name="task2" value="0" id="id_task"/>
+    <input type="hidden" name="gamedone2" value="0" id="id_gamedone"/>
+
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+    <script>
+        var timerestin={{timerest}};
+       var speed = {{ Constants.speed|json }};
+        var choose_difficulty = false;
+        var chosen_arc_id = {{player.difficulty2|json  }};
+
+        var last=1;
+    </script>
+    <link rel="preload" href="{% static 'js/dist/trainr.js' %}" as="script">
+    <script src="{% static 'js/dist/trainr.js' %}"></script>
+
+{% endblock %}

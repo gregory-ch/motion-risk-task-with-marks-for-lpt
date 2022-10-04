@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Информация об участнике
+{% endblock %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+            
+        </div>
+    </div>
+По желанию просим Вас заполнить контактные данные<br>
+<table>
+<tr><td>Имя </td><td> <input type="text" name="name" /></td></tr>
+<tr><td>Email</td><td>   <input type="text" name="email" /></td></tr></table>
+      <hr>
+Поскольку мы ожидаем, что результаты будут зависеть от индивидуальных особенностей, то просим Вас ввести некоторую информацию о себе.<br>
+<table>
+<tr><td>Возраст</td><td>    <input type="text" name="age" /></td></tr>
+<tr><td>Пол  </td><td>  <input type="text" name="mf" /></td></tr></table>
+                                        <hr>
+Eсли Вы захотите обсудить результаты или аппелировать баллы, пожалуйста запишите Ваш уникальный код сессии {{participant.code}}<br>
+
+    {% next_button %}
+
+{% endblock %}

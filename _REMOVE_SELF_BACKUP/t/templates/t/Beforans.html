@@ -1,0 +1,132 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+   <style>
+    div
+    {
+    text-align: left; 
+    text-indent: 0px; 
+    padding: 0px 0px 0px 0px; 
+    margin: 0px 0px 0px 0px;
+    }
+    td.td
+    {
+                 border-width : 1px; 
+                 background-color: #99cc00;
+                 text-align:center;
+
+    }
+    </style>  
+
+{% block content %}
+    <center> <br><br><br><br><br>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Ваш ответ</h5>
+<br>
+    <div id="avx"></div>
+  <font size="8" face="Courier New" >
+<table border=1 id="mytable">
+<tr><td id="td1" style="width:100px;text-align: center; vertical-align: middle" ><h1><b><p style="font-size:100px"> {{a1}}</p></h1></td><td id="td2" style="width:100px;text-align: center; vertical-align: middle"><h1><b><p style="font-size:100px"> {{a2}}</p></h1></td>
+<td id="td3" style="width:100px;text-align: center; vertical-align: middle"><h1><b><p style="font-size:100px"> {{a3}}</p></h1></td><td id="td4" style="width:100px;text-align: center; vertical-align: middle"><h1><b><p style="font-size:100px"> {{a4}}</p></h1></td></tr>
+</table>
+</font>
+        </div>
+    </div> </center>
+    <input type="hidden" name="ans1"  value="0" id="ans1" />
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+
+var currentTime=0;
+var currentTime2=0;
+
+
+window.onload=function () {currentTime= new Date();sendMessage(5); }
+function mf(){ currentTime2= (new Date()-currentTime);
+//$('#currentTime').val(Math.floor(currentTime2-currentTime)/1000);
+
+}
+
+
+
+var ax = document.getElementById('avx');
+
+    //some code
+
+document.onkeydown = function (e) {
+sendMessage(6);
+
+    var keyCode = e.keyCode;
+mf(this);
+
+if (currentTime2>2000 ){ 
+
+//            ax.innerHTML = keyCode;
+	console.log('{{a1}}'.charCodeAt(0));
+//	console.log(String.fromCharCode(e.keyCode));
+    if(keyCode == 65) {
+        document.getElementById("td1").bgColor = '#00FF00'; document.getElementById("td2").bgColor = '#FFFFFF'; document.getElementById("td3").bgColor = '#FFFFFF';  document.getElementById("td4").bgColor = '#FFFFFF';     
+        $('#ans1').val('{{a1}}');
+    }
+    if(keyCode == 66) {
+        document.getElementById("td2").bgColor = '#00FF00'; document.getElementById("td1").bgColor = '#FFFFFF'; document.getElementById("td3").bgColor = '#FFFFFF';  document.getElementById("td4").bgColor = '#FFFFFF';      
+        $('#ans1').val('{{a2}}');
+    }
+    if(keyCode == 67) {
+        document.getElementById("td3").bgColor = '#00FF00'; document.getElementById("td1").bgColor = '#FFFFFF'; document.getElementById("td2").bgColor = '#FFFFFF';  document.getElementById("td4").bgColor = '#FFFFFF';       
+        $('#ans1').val('{{a3}}');
+    }
+    if(keyCode == 68) {
+        document.getElementById("td4").bgColor = '#00FF00'; document.getElementById("td1").bgColor = '#FFFFFF'; document.getElementById("td2").bgColor = '#FFFFFF';  document.getElementById("td3").bgColor = '#FFFFFF';      
+        $('#ans1').val('{{a4}}');
+    }
+    if(keyCode == 49) {
+        document.getElementById("td1").bgColor = '#00FF00'; document.getElementById("td2").bgColor = '#FFFFFF'; document.getElementById("td3").bgColor = '#FFFFFF';  document.getElementById("td4").bgColor = '#FFFFFF';     
+        $('#ans1').val('{{a1}}');
+    }
+    if(keyCode == 50) {
+        document.getElementById("td2").bgColor = '#00FF00'; document.getElementById("td1").bgColor = '#FFFFFF'; document.getElementById("td3").bgColor = '#FFFFFF';  document.getElementById("td4").bgColor = '#FFFFFF';      
+        $('#ans1').val('{{a2}}');
+    }
+    if(keyCode == 51) {
+        document.getElementById("td3").bgColor = '#00FF00'; document.getElementById("td1").bgColor = '#FFFFFF'; document.getElementById("td2").bgColor = '#FFFFFF';  document.getElementById("td4").bgColor = '#FFFFFF';       
+        $('#ans1').val('{{a3}}');
+    }
+    if(keyCode == 52) {
+        document.getElementById("td4").bgColor = '#00FF00'; document.getElementById("td1").bgColor = '#FFFFFF'; document.getElementById("td2").bgColor = '#FFFFFF';  document.getElementById("td3").bgColor = '#FFFFFF';      
+        $('#ans1').val('{{a4}}');
+    }
+
+ }
+
+};
+
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+
+</script>    
+
+{% endblock %}

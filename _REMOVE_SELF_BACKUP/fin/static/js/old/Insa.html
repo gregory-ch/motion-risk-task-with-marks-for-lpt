@@ -1,0 +1,72 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Спасибо за участие. 
+{% endblock %}
+
+{% block content %}
+                                                             
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Проверка инсайта</h5>
+
+ В отношение каждой решенной задачи мы бы хотели знать появилось ли это решение<br>
+ в виде инсайта (озарения), или было достигнуто путем последовательных аналитических<br>
+ действий. Ощущение инсайта («Ага!») характеризуется внезапностью и «очевидностью»<br>
+ решения. Это как озарение – Вы можете не знать, как оно появилось, но относительно<br>
+ уверены в его правильности без необходимости проверки. Нужное слово появилось внезапно,<br>
+ и Вы сразу же поняли, что это и есть правильный ответ. В противоположность этому, <br>
+аналитическим путем к решению приходят шаг за шагом и на каждом шаге ощущается<br>
+ необходимость сверить результат с предыдущими шагами и с исходной задачей.<br><br>
+ В качестве примера представьте лампу, которая либо вспыхивает мгновенно, сразу<br>
+ освещая все вокруг, либо разогревается очень медленно. В случае каждого решения,<br>
+ мы просим выразить Ваше субъективное мнение – было ли оно «инсайтным», или <br>
+«аналитическим». Здесь не может быть правильного, или неправильного ответа – <br>
+просто ориентируйтесь на Вашу интуицию.
+<br>
+<hr>
+Отметьте чекбокс там, где второй ответ был инсайтом.
+<br> <br>
+{% if  f.0 != None %} <input type="checkbox" name="ins{{e.0}}"> <b>{{a.0}} </b>... Ваш ответ - <b> {{f.0}}</b> <br>{% endif %} 
+{% if  f.1 != None %} <input type="checkbox" name="ins{{e.1}}"> <b>{{a.1}} </b>... Ваш ответ - <b> {{f.1}}</b> <br>{% endif %} 
+{% if  f.2 != None %} <input type="checkbox" name="ins{{e.2}}"> <b>{{a.2}} </b>... Ваш ответ - <b> {{f.2}}</b> <br>{% endif %} 
+{% if  f.3 != None %} <input type="checkbox" name="ins{{e.3}}"> <b>{{a.3}} </b>... Ваш ответ - <b> {{f.3}}</b> <br>{% endif %} 
+{% if  f.4 != None %} <input type="checkbox" name="ins{{e.4}}"> <b>{{a.4}} </b>... Ваш ответ - <b> {{f.4}}</b> <br>{% endif %} 
+{% if  f.5 != None %} <input type="checkbox" name="ins{{e.5}}"> <b>{{a.5}} </b>... Ваш ответ - <b> {{f.5}}</b> <br>{% endif %} 
+{% if  f.6 != None %} <input type="checkbox" name="ins{{e.6}}"> <b>{{a.6}} </b>... Ваш ответ - <b> {{f.6}}</b> <br>{% endif %} 
+{% if  f.7 != None %} <input type="checkbox" name="ins{{e.7}}"> <b>{{a.7}} </b>... Ваш ответ - <b> {{f.7}}</b> <br>{% endif %} 
+{% if  f.8 != None %} <input type="checkbox" name="ins{{e.8}}"> <b>{{a.8}} </b>... Ваш ответ - <b> {{f.8}}</b> <br>{% endif %} 
+{% if  f.9 != None %} <input type="checkbox" name="ins{{e.9}}"> <b>{{a.9}} </b>... Ваш ответ - <b> {{f.9}}</b> <br>{% endif %} <br>
+
+<hr>
+
+        </div>
+    </div>
+
+
+    {% next_button %}
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {currentTime= new Date(); }
+function mf(){ currentTime2= new Date();
+$('#currentTime').val(Math.floor(currentTime2-currentTime)/1000);
+
+}
+</script>    
+
+<!--link rel="preload" href="{% static 'js/dist/train.js' %}" as="script">
+    <script src="{% static 'js/dist/train.js' %}"></script>
+     -->
+{% endblock %}

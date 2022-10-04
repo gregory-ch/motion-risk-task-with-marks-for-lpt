@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    {{ form.difficulty1.errors }}
+{{ form.task1.errors }}
+    <div id="p5cont"></div>
+    <input type="hidden" name="difficulty1" value="0" id="id_difficulty"/>
+    <input type="hidden" name="task1" value="0" id="id_task"/>
+
+    {% next_button %}
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+    <script>
+        var speed = 0.01;
+        var choose_difficulty = true;
+
+    </script>
+    <link rel="preload" href="{% static 'js/dist/train2.js' %}" as="script">
+    <script src="{% static 'js/dist/train2.js' %}"></script>
+
+{% endblock %}

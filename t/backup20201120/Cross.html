@@ -1,0 +1,45 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+    <div class="card">
+        <div class="card-body">
+    <div id="avx"></div>
+
+<img src="{% static "pkt/cross.png" %}"/> 
+        </div>
+    </div>
+    <input type="hidden" name="randomTime" value="0" id="randomTime"/>
+
+
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {
+var randomtime=0;
+	        var ax = document.getElementById('avx');
+
+    currentTime= new Date();
+    randomTime=Math.floor(Math.random() * Math.floor(2000));
+    $('#randomTime').val(randomTime);
+//            ax.innerHTML = randomTime;
+
+    setTimeout(function () {
+    $('form#form').submit();
+    }, 2000+randomtime);
+}
+
+</script>    
+
+{% endblock %}

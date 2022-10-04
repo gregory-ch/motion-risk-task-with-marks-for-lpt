@@ -1,0 +1,52 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+                
+{% block title %}
+Считаем цвета. Период {{ view.round_number }} из {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Инструкция:</h5>
+            Посчитайте сколько рад появится зеленый. Голубой и синий игнорируйте:
+        </div>
+    </div>
+    <div id="p5cont"></div>
+    <input type="hidden" name="bls" id="id_bls"/>
+
+   <div id="round">
+       <div id="oo" class="css" onClick="animation({}, this);"></div> 
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+
+    {% next_button %}
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+    <link rel="preload" href="{% static 'js/src/myanim.js' %}" as="script">
+    <script src="{% static 'js/src/myanim.js' %}"></script>
+
+
+<style>
+.css {
+	position: relative;
+	width:200px;
+	height:200px;
+	left: 50%;
+	top: 40px;
+	border: 30px solid #fff;
+	cursor: pointer;
+	    border-radius: 39px;
+	   -webkit-border-radius: 39px;
+	   -moz-border-radius: 39px;
+
+}
+
+
+</style>
+
+
+{% endblock %}

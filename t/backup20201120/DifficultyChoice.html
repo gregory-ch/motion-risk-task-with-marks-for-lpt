@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+    <div class="card">
+    </div>
+    <div id="p5cont"></div>
+    <input type="hidden" name="difficulty" value="0" id="id_difficulty"/>
+
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+    <script>
+        var timerestin=30000;
+
+        var speed = 0.01;
+        var choose_difficulty = true;
+        var chosen_arc_id=0;
+
+       // document.dispatchEvent(myJsPsynchEvents.setup);
+       // document.dispatchEvent(myJsPsynchEvents.trigger);
+
+//  if (key == 'b' || key == 'B') {
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <link rel="preload" href="{% static 'js/dist/trainr.js' %}" as="script">
+    <script src="{% static 'js/dist/trainr.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Ваш ответ: </h5>
+<input type="text" name="ans1r" autofocus>
+
+<br>
+
+        </div>
+    </div>
+
+
+
+
+
+                                                             
+
+    {% next_button %}
+
+
+{% endblock %}
+             {% block scripts %}
+    <script src="{% static 'js/dist/jspsych.js' %}"></script>
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+window.onload=function () {currentTime= new Date();sendMessage(7); }
+function mf(){ currentTime2= new Date();
+$('#currentTime').val(Math.floor(currentTime2-currentTime)/1000);
+
+}
+
+
+////////////synq
+        function bindEvent(element, eventName, eventHandler) {
+            if (element.addEventListener) {
+                element.addEventListener(eventName, eventHandler, false);
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + eventName, eventHandler);
+            }
+        }
+
+        // Send a message to the parent
+        var sendMessage = function (msg) {
+            // Make sure you are sending a string, and to stringify JSON
+            window.parent.postMessage(msg, '*');
+        };
+///////////// synq end
+
+
+</script>    
+
+{% endblock %}
